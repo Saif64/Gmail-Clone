@@ -7,9 +7,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.runtime.Composable
@@ -24,10 +22,12 @@ import androidx.compose.ui.unit.dp
 import com.example.gmail.GmailApp
 import com.example.gmail.R
 import com.example.gmail.ui.theme.GmailTheme
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.launch
 
 @Composable
-fun HomeAppBar() {
-    val context = LocalContext.current
+fun HomeAppBar(scaffoldState: ScaffoldState, scope: CoroutineScope) {
+
     Box(
         modifier = Modifier.padding(10.dp)
     ) {
@@ -42,10 +42,16 @@ fun HomeAppBar() {
                     .fillMaxSize()
                     .padding(8.dp)
             ) {
+
                 Icon(
                     imageVector = Icons.Default.Menu, contentDescription = null,
                     modifier = Modifier
                         .padding(end = 16.dp)
+                        .clickable {
+                            scope.launch {
+                                scaffoldState.drawerState.open()
+                            }
+                        }
                 )
 
                 Text(
