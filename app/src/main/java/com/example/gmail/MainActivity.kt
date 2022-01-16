@@ -5,11 +5,15 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Scaffold
+import androidx.compose.material.Surface
+import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.gmail.component.BottomBar
 import com.example.gmail.component.GmailDrawerMenu
 import com.example.gmail.component.HomeAppBar
 import com.example.gmail.ui.theme.GmailTheme
@@ -32,11 +36,11 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun GmailApp() {
     val systemUiController = rememberSystemUiController()
-    if(isSystemInDarkTheme()){
+    if (isSystemInDarkTheme()) {
         systemUiController.setSystemBarsColor(
             color = Color.Transparent
         )
-    }else{
+    } else {
         systemUiController.setSystemBarsColor(
             color = Color.White
         )
@@ -50,7 +54,8 @@ fun GmailApp() {
         topBar = { HomeAppBar(scaffoldState, coroutineScope) },
         drawerContent = {
             GmailDrawerMenu(scrollState = scrollState)
-        }
+        },
+        bottomBar = { BottomBar() }
     ) {
 
     }

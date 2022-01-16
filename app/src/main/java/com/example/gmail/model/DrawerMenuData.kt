@@ -1,4 +1,4 @@
-package com.example.gmail
+package com.example.gmail.model
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.*
