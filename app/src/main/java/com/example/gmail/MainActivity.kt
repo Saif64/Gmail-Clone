@@ -16,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.gmail.component.BottomBar
 import com.example.gmail.component.GmailDrawerMenu
 import com.example.gmail.component.HomeAppBar
+import com.example.gmail.component.MailList
 import com.example.gmail.ui.theme.GmailTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
@@ -57,7 +58,7 @@ fun GmailApp() {
         },
         bottomBar = { BottomBar() }
     ) {
-
+        MailList(paddingValues = it)
     }
 }
 
